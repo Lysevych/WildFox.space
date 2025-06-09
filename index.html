@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>WildFox</title>
+	<meta name="language" content="en">
+	<meta name="theme-color" content="#ffffff" />
+	<meta name="description" content="WildFox – family website" />
+	<meta name="keywords" content="Lysevych, WildFox, WildFoxFamily, WildFoxEyes, Maryna Lysevych, Lysevych Oleksandr" />
+	<meta name="author" content="Lysevych Oleksandr" />
+	<meta name="copyright" content="© 2015–2025 Maryna Lysevych & Lysevych Oleksandr">
+	<meta name="robots" content="index, follow" />
+
+	<meta property="og:title" content="WildFox" />
+	<meta property="og:description" content="WildFox – family website" />
+	<meta property="og:image" content="https://raw.githubusercontent.com/Lysevych/Lysevych/main/WildFox-logo.webp" />
+	<meta property="og:url" content="https://WildFox.space/" />
+	<meta property="og:type" content="website" />
+
+	<link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Lysevych/Lysevych/main/FavIcon-WildFox.ico" />
+	<link rel="icon" type="image/png" sizes="96x96" href="https://raw.githubusercontent.com/Lysevych/Lysevych/main/FavIcon-96x96-WildFox.png" />
+	<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Lysevych/Lysevych/main/Apple-Touch-Icon-WildFox.png" />
+	<link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/Lysevych/Lysevych/main/Android-Chrome-192x192-WildFox.png" />
+	<link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/Lysevych/Lysevych/main/Android-Chrome-512x512-WildFox.png" />
+	<link rel="canonical" href="https://WildFox.space/" />
+
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org/",
+			"@graph": [{
+					"@type": "Person",
+					"name": "Maryna Lysevych",
+					"url": "https://WildFox.space/",
+					"image": "https://raw.githubusercontent.com/Lysevych/Lysevych/main/Maryna-Lysevych.webp",
+					"sameAs": [
+						"https://Maryna.Lysevych.net/",
+						"https://facebook.com/Marina.Dikaya/",
+						"https://instagram.com/MarynaDyka/",
+						"https://linkedin.com/in/Maryna-Lysevych-b3353014/"
+					],
+					"description": "Co-founder of WildFox."
+				},
+				{
+					"@type": "Person",
+					"name": "Lysevych Oleksandr",
+					"url": "https://WildFox.space/",
+					"image": "https://raw.githubusercontent.com/Lysevych/Lysevych/main/Android-Chrome-192x192-Lysevych.png",
+					"sameAs": [
+						"https://Lysevych.net/",
+						"https://facebook.com/Lysevych/",
+						"https://instagram.com/Lysevych.Oleksandr/",
+						"https://linkedin.com/in/LysevychOleksandr/"
+					],
+					"description": "Co-founder of WildFox."
+				}
+			]
+		}
+	</script>
+
+	<style>
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			width: 100vw;
+			background-color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+			font-family: Helvetica, Arial, Sans-serif;
+		}
+
+		.tooltip {
+			position: fixed;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: clamp(250px, 30vw, 30vw);
+			display: inline-block;
+			z-index: 100;
+		}
+
+		.center-image {
+			width: 100%;
+			height: auto;
+			display: block;
+			user-select: none;
+			-webkit-user-drag: none;
+		}
+
+		.tooltip-text-main {
+			position: absolute;
+			top: 85%;
+			left: 50%;
+			transform: translateX(-50%);
+			color: #ffffff;
+			background: linear-gradient(45deg, #666666, #999999);
+			font-size: 15px;
+			text-align: center;
+			white-space: nowrap;
+			text-shadow: 0px 0px 10px #ffffff;
+			padding: 10px;
+			border-radius: 10px;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.5s ease;
+			user-select: none;
+			z-index: 10;
+		}
+
+		.tooltip-text-main.visible {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.bottom-images {
+			position: fixed;
+			bottom: clamp(20px, 3vw, 3vw);
+			left: 50%;
+			transform: translateX(-50%);
+			width: clamp(90px, 3vw, 3vw);
+			height: clamp(90px, 3vw, 3vw);
+			z-index: 10;
+			user-select: none;
+			pointer-events: auto;
+		}
+
+		.bottom-images a {
+			position: absolute;
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+
+		.bottom-images a:first-child {
+			left: calc(0% - 30px);
+			z-index: 1;
+		}
+
+		.bottom-images a:last-child {
+			left: calc(0% + 30px);
+			z-index: 2;
+		}
+
+		.bottom-images img {
+			width: 100%;
+			height: auto;
+			display: block;
+			user-select: none;
+			-webkit-user-drag: none;
+		}
+
+		.tooltip-bottom {
+			position: absolute;
+			bottom: 100%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-10px);
+			color: #ffffff;
+			padding: 10px;
+			border-radius: 10px;
+			font-size: 15px;
+			white-space: nowrap;
+			text-align: center;
+			text-shadow: 0 0 10px #ffffff;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.5s ease;
+			z-index: 20;
+		}
+
+		.tooltip-bottom.sun {
+			background: linear-gradient(0deg, #999999, #666666);
+		}
+
+		.tooltip-bottom.moon {
+			background: linear-gradient(0deg, #666666, #999999);
+		}
+
+		.tooltip-bottom.sun::after,
+		.tooltip-bottom.moon::after {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			border-left: 7px solid transparent;
+			border-right: 7px solid transparent;
+			border-top: 10px solid;
+		}
+
+		.tooltip-bottom.sun::after {
+			border-top-color: #999999;
+		}
+
+		.tooltip-bottom.moon::after {
+			border-top-color: #666666;
+		}
+
+		.tooltip-bottom.visible {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		@media (hover: hover) and (pointer: fine) {
+			.bottom-images a:hover .tooltip-bottom {
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="tooltip">
+		<img class="center-image" src="https://raw.githubusercontent.com/Lysevych/Lysevych/main/WildFox-logo.webp" alt="WildFox family logo" />
+		<div class="tooltip-text-main" id="tooltip">by Maryna Lysevych<br>& Lysevych Oleksandr<br>© 2015–2025</div>
+	</div>
+
+	<div class="bottom-images">
+		<a href="https://Lysevych.net/" target="_blank" rel="me noopener noreferrer" aria-label="Website of Lysevych Oleksandr">
+			<img src="https://raw.githubusercontent.com/Lysevych/Lysevych/main/Sun.webp" class="footer-image" alt="Sun: Lysevych Oleksandr" />
+			<span class="tooltip-bottom sun">Lysevych Oleksandr</span>
+		</a>
+		<a href="https://Maryna.Lysevych.net/" target="_blank" rel="me noopener noreferrer" aria-label="Website of Maryna Lysevych">
+			<img src="https://raw.githubusercontent.com/Lysevych/Lysevych/main/Moon.webp" class="footer-image" alt="Moon: Maryna Lysevych" />
+			<span class="tooltip-bottom moon">Maryna Lysevych</span>
+		</a>
+	</div>
+
+	<script>
+		const tooltip = document.getElementById('tooltip');
+		const tooltipTrigger = document.querySelector('.tooltip');
+		let tooltipTimer;
+		let tooltipVisible = false;
+
+		function showTooltip() {
+			clearTimeout(tooltipTimer);
+			tooltip.classList.add('visible');
+			tooltipVisible = true;
+			tooltipTimer = setTimeout(hideTooltip, 10000);
+		}
+
+		function hideTooltip() {
+			tooltip.classList.remove('visible');
+			tooltipVisible = false;
+		}
+
+		function hideAllBottomTooltips() {
+			document.querySelectorAll('.tooltip-bottom.visible').forEach(el => el.classList.remove('visible'));
+		}
+		document.addEventListener('touchstart', (e) => {
+			if (!tooltipTrigger.contains(e.target) && tooltipVisible) hideTooltip();
+			if (!e.target.closest('.bottom-images a')) hideAllBottomTooltips();
+		});
+		tooltipTrigger.addEventListener('mouseenter', showTooltip);
+		tooltipTrigger.addEventListener('mouseleave', hideTooltip);
+		tooltipTrigger.addEventListener('touchstart', (e) => {
+			if (tooltipVisible) hideTooltip();
+			else showTooltip();
+		});
+		document.querySelectorAll('.bottom-images a').forEach(link => {
+			const ttip = link.querySelector('.tooltip-bottom');
+			link.addEventListener('touchstart', function(e) {
+				if (ttip.classList.contains('visible')) return;
+				e.preventDefault();
+				hideAllBottomTooltips();
+				ttip.classList.add('visible');
+				setTimeout(() => ttip.classList.remove('visible'), 10000);
+			});
+		});
+	</script>
+</body>
+
+</html>
