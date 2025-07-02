@@ -86,9 +86,15 @@
 		.center-image {
 			width: 100%;
 			height: auto;
+			cursor: pointer;
+			transition: transform 1s ease;
 			display: block;
 			user-select: none;
 			-webkit-user-drag: none;
+		}
+
+		.center-image:hover {
+			transform: scale(1.1);
 		}
 
 		.tooltip-text-main {
@@ -148,9 +154,15 @@
 		.bottom-images img {
 			width: 100%;
 			height: auto;
+			cursor: pointer;
+			transition: transform 1s ease;
+			-webkit-user-drag: none;
 			display: block;
 			user-select: none;
-			-webkit-user-drag: none;
+		}
+
+		.bottom-images img:hover {
+			transform: scale(1.1);
 		}
 
 		.tooltip-bottom {
