@@ -344,28 +344,28 @@
 		function hideAllBottomTooltips() {
 			document.querySelectorAll('.tooltip-bottom.visible').forEach(el => el.classList.remove('visible'));
 		}
-		// Touch events
 		document.addEventListener('touchstart', (e) => {
 			if (!tooltipTrigger.contains(e.target) && tooltipVisible) hideTooltip();
 			if (!topRightTooltipTrigger.contains(e.target) && topRightTooltipVisible) hideTopRightTooltip();
 			if (!e.target.closest('.bottom-images a')) hideAllBottomTooltips();
 		});
-		// Main tooltip events
 		tooltipTrigger.addEventListener('mouseenter', showTooltip);
 		tooltipTrigger.addEventListener('mouseleave', hideTooltip);
 		tooltipTrigger.addEventListener('touchstart', (e) => {
 			if (tooltipVisible) hideTooltip();
 			else showTooltip();
 		});
-		// Top right tooltip events
 		topRightTooltipTrigger.addEventListener('mouseenter', showTopRightTooltip);
 		topRightTooltipTrigger.addEventListener('mouseleave', hideTopRightTooltip);
 		topRightTooltipTrigger.addEventListener('touchstart', (e) => {
-			e.preventDefault();
-			if (topRightTooltipVisible) hideTopRightTooltip();
-			else showTopRightTooltip();
+			if (topRightTooltipVisible) {
+				hideTopRightTooltip();
+				return;
+			} else {
+				e.preventDefault();
+				showTopRightTooltip();
+			}
 		});
-		// Bottom images tooltip events
 		document.querySelectorAll('.bottom-images a').forEach(link => {
 			const ttip = link.querySelector('.tooltip-bottom');
 			link.addEventListener('touchstart', function(e) {
