@@ -376,6 +376,45 @@
 				setTimeout(() => ttip.classList.remove('visible'), 10000);
 			});
 		});
+		const fadeConfig = {
+			startDelay: 3000,
+			fadeDuration: 1000,
+			logoShowDuration: 3000,
+			pawShowDuration: 1000,
+			cycleInterval: 5000,
+			pawImageUrl: 'https://raw.githubusercontent.com/Lysevych/Lysevych/main/Paw-print.svg'
+		};
+
+		function performFadeSequence() {
+			const logoElement = document.querySelector('.top-right-image');
+			if (!logoElement) return;
+			const originalSrc = logoElement.src;
+			logoElement.style.opacity = '0';
+			setTimeout(() => {
+				logoElement.src = fadeConfig.pawImageUrl;
+				logoElement.style.opacity = '1';
+				setTimeout(() => {
+					logoElement.style.opacity = '0';
+					setTimeout(() => {
+						logoElement.src = originalSrc;
+						logoElement.style.opacity = '1';
+					}, fadeConfig.fadeDuration);
+				}, fadeConfig.pawShowDuration);
+			}, fadeConfig.fadeDuration);
+		}
+
+		function startLogoFadeAnimation() {
+			const logoElement = document.querySelector('.top-right-image');
+			if (!logoElement) return;
+			logoElement.style.transition = `opacity ${fadeConfig.fadeDuration}ms ease, transform 1s ease`;
+			setTimeout(() => {
+				performFadeSequence();
+				setInterval(() => {
+					performFadeSequence();
+				}, fadeConfig.cycleInterval);
+			}, fadeConfig.startDelay);
+		}
+		document.addEventListener('DOMContentLoaded', startLogoFadeAnimation);
 	</script>
 </body>
 
