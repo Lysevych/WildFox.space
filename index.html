@@ -408,10 +408,12 @@
 			if (!logoElement) return;
 			logoElement.style.transition = `opacity ${fadeConfig.fadeDuration}ms ease, transform 1s ease`;
 			setTimeout(() => {
-				performFadeSequence();
-				setInterval(() => {
+				setTimeout(() => {
 					performFadeSequence();
-				}, fadeConfig.cycleInterval);
+					setInterval(() => {
+						performFadeSequence();
+					}, fadeConfig.cycleInterval);
+				}, 100);
 			}, fadeConfig.startDelay);
 		}
 		document.addEventListener('DOMContentLoaded', startLogoFadeAnimation);
