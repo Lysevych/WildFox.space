@@ -391,6 +391,11 @@
 			const logoElement = document.querySelector('.top-right-image');
 			if (!logoElement) return;
 			const originalSrc = logoElement.src;
+			if (!logoElement.style.transition.includes('opacity')) {
+				logoElement.style.transition = `opacity ${fadeConfig.fadeDuration}ms ease, transform 1s ease`;
+				setTimeout(() => performFadeSequence(), 50);
+				return;
+			}
 			logoElement.style.opacity = '0';
 			setTimeout(() => {
 				logoElement.src = fadeConfig.pawImageUrl;
@@ -409,14 +414,16 @@
 			const logoElement = document.querySelector('.top-right-image');
 			if (!logoElement) return;
 			logoElement.style.transition = `opacity ${fadeConfig.fadeDuration}ms ease, transform 1s ease`;
-			setTimeout(() => {
+			requestAnimationFrame(() => {
 				setTimeout(() => {
-					performFadeSequence();
-					setInterval(() => {
+					setTimeout(() => {
 						performFadeSequence();
-					}, fadeConfig.cycleInterval);
-				}, 100);
-			}, fadeConfig.startDelay);
+						setInterval(() => {
+							performFadeSequence();
+						}, fadeConfig.cycleInterval);
+					}, 200);
+				}, fadeConfig.startDelay);
+			});
 		}
 		document.addEventListener('DOMContentLoaded', startLogoFadeAnimation);
 	</script>
