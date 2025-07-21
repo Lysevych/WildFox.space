@@ -71,6 +71,14 @@
 			align-items: center;
 			overflow: hidden;
 			font-family: Helvetica, Arial, Sans-serif;
+			user-select: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+		}
+
+		* {
+			-webkit-user-drag: none;
 		}
 
 		.tooltip {
@@ -311,6 +319,10 @@
 	</a>
 
 	<script>
+		document.addEventListener('contextmenu', e => e.preventDefault());
+		document.addEventListener('copy', e => e.preventDefault());
+		document.addEventListener('selectstart', e => e.preventDefault());
+		document.addEventListener('dragstart', e => e.preventDefault());
 		const tooltip = document.getElementById('tooltip');
 		const tooltipTrigger = document.querySelector('.tooltip');
 		const topRightTooltip = document.getElementById('tooltip-top-right');
